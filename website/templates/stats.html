@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Stats{% endblock %}
+
+{% block content %}
+<h1 align="center">Stat Leaders</h1>
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Rushing Yards All Time</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% set noted_players = [] %}
+                        {% for note in user.notes %}
+                            {% set _ = noted_players.append(note.text) %}
+                        {% endfor %}
+                    
+                        {% for player in runners %}
+                            {% if player.name in noted_players %}
+                                <li class="list-group-item font-weight-bold">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% else %}
+                                <li class="list-group-item">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>                                        
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Passing Yards All Time</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% set noted_players = [] %}
+                        {% for note in user.notes %}
+                            {% set _ = noted_players.append(note.text) %}
+                        {% endfor %}
+                    
+                        {% for player in passers %}
+                            {% if player.name in noted_players %}
+                                <li class="list-group-item font-weight-bold">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% else %}
+                                <li class="list-group-item">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Receiving Yards All Time</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% set noted_players = [] %}
+                        {% for note in user.notes %}
+                            {% set _ = noted_players.append(note.text) %}
+                        {% endfor %}
+                    
+                        {% for player in WRs %}
+                            {% if player.name in noted_players %}
+                                <li class="list-group-item font-weight-bold">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% else %}
+                                <li class="list-group-item">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul> 
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Solo Tackles All Time</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% set noted_players = [] %}
+                        {% for note in user.notes %}
+                            {% set _ = noted_players.append(note.text) %}
+                        {% endfor %}
+                    
+                        {% for player in Tacks %}
+                            {% if player.name in noted_players %}
+                                <li class="list-group-item font-weight-bold">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% else %}
+                                <li class="list-group-item">
+                                    {{ player.rank }}. {{ player.name }} - {{ player.yards }} Yards ({{ player.team }})
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
